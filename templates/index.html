@@ -1,12 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<h1>Book Recommendation System</h1>
 <form method="POST" action="{{ url_for('recommend') }}">
-  <input
-    type="text"
-    name="user_input"
-    placeholder="Enter a book title or author"
-    required
-  />
-  <button type="submit">Get Recommendations</button>
+  <input type="text" name="q" placeholder="Search for books..." />
+  <button type="submit">Search</button>
 </form>
 {% endblock %}

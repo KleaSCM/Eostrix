@@ -10,26 +10,13 @@
     />
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
-      <form action="{{ url_for('search') }}" method="GET">
-        <input type="text" name="q" placeholder="Search books" />
+    <header>
+      <h1>Book Recommendation System</h1>
+      <form action="{{ url_for('search') }}" method="get">
+        <input type="text" name="q" placeholder="Search for books..." />
         <button type="submit">Search</button>
       </form>
-    </nav>
-    <div class="container">
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div class="flash {{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
-    </div>
+    </header>
+    {% block content %} {% endblock %}
   </body>
 </html>
