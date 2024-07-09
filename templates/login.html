@@ -1,15 +1,20 @@
 {% extends "base.html" %} {% block content %}
 <h2>Login</h2>
 <form method="POST" action="{{ url_for('login') }}">
-  {{ form.hidden_tag() }}
-  <div>
-    {{ form.email.label }}<br />
-    {{ form.email(size=32) }}
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" name="email" required />
   </div>
-  <div>
-    {{ form.password.label }}<br />
-    {{ form.password(size=32) }}
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      required
+    />
   </div>
-  <div>{{ form.submit() }}</div>
+  <button type="submit" class="btn btn-primary">Login</button>
 </form>
 {% endblock %}

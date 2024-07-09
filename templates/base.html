@@ -6,17 +6,58 @@
     <title>Book Recommendation System</title>
     <link
       rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .card {
+        margin-bottom: 20px;
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1>Book Recommendation System</h1>
-      <form action="{{ url_for('search') }}" method="get">
-        <input type="text" name="q" placeholder="Search for books..." />
-        <button type="submit">Search</button>
-      </form>
-    </header>
-    {% block content %} {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('home') }}">Book Rec System</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="alert alert-{{ messages[0][0] }}" role="alert">
+        {{ messages[0][1] }}
+      </div>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

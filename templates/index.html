@@ -1,6 +1,16 @@
 {% extends "base.html" %} {% block content %}
-<form method="POST" action="{{ url_for('recommend') }}">
-  <input type="text" name="q" placeholder="Search for books..." />
-  <button type="submit">Search</button>
+<h2>Welcome to the Book Recommendation System!</h2>
+<form method="GET" action="{{ url_for('search') }}">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for books..."
+      name="q"
+    />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
 </form>
 {% endblock %}

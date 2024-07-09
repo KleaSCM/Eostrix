@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<h2>Rate Book</h2>
+<form method="POST" action="{{ url_for('rate', book_id=book_id) }}">
+  <div class="form-group">
+    <label for="rating">Rating (1-5):</label>
+    <select class="form-control" id="rating" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit Rating</button>
+</form>
+{% endblock %}
