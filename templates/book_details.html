@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %}
+<h2>{{ book.title }}</h2>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>Genre:</strong> {{ book.genre }}</p>
+<p><strong>Description:</strong> {{ book.description }}</p>
+<h3>Reviews</h3>
+<ul>
+  {% for rating in ratings %}
+  <li>{{ rating.rating }} stars - {{ rating.review }}</li>
+  {% endfor %}
+</ul>
+{% if current_user.is_authenticated %}
+<h3>Leave a Review</h3>
+<form action="{{ url_for('rate_book', book_id=book.id) }}" method="POST">
+  <div>
+    <label for="rating">Rating:</label>
+    <select name="rating" id="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <div>
+    <label for="review">Review:</label>
+    <textarea name="review" id="review" rows="4"></textarea>
+  </div>
+  <button type="submit">Submit Review</button>
+</form>
+<h3>Add to Favorites</h3>
+<form action="{{ url_for('favorite_book', book_id=book.id) }}" method="POST">
+  <button type="submit">Add to Favorites</button>
+</form>
+{% else %}
+<p>
+  Please <a href="{{ url_for('login') }}">login</a> to leave a review or add to
+  favorites.
+</p>
+{% endif %} {% endblock %}

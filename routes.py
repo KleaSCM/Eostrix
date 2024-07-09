@@ -112,4 +112,12 @@ def rate_book(book_id):
     flash('Thank you for your review!', 'success')
     return redirect(url_for('book_details', book_id=book_id))
 
-@app.route('/send
+@app.route('/send_email', methods=['POST'])
+@login_required
+def send_email():
+    email = request.form['email']
+    msg = Message('New Book Recommendation', sender='your_email@example.com', recipients=[email])
+    msg.body = 'Check out these new book recommendations...'
+    mail.send(msg)
+    flash('Email sent successfully!', 'success')
+    return redirect(url_for('index'))

@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block content %}
+<h2>Recommended Books</h2>
+<ul>
+  {% for book in recommended_books %}
+  <li>{{ book }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
