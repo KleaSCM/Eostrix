@@ -19,11 +19,17 @@ with app.app_context():
     table_names = inspector.get_table_names()
     print(f"Tables created: {table_names}")
     
-    # Add book data to the database
-    for index, row in book_data.iterrows():
-        print(f"Inserting book: {row['title']}")
-        book = Book(title=row['title'], author=row['author'], genre=row['genre'], description=row['description'])
-        db.session.add(book)
-    
-    db.session.commit()
-    print("Database initialization complete.")
+    # Check if Book table is created
+    if 'book' not in table_names:
+        print("Error: Book table not created!")
+    else:
+        print("Book table exists. Inserting data...")
+        # Add book data to the database
+        for index, row in book_data.iterrows():
+            print(f"Inserting book: {row['title']}")
+            book = Book(title=row['title'], author=row['author'], genre=row['genre'], description=row['description'])
+            db.session.add(book)
+        
+        db.session.commit()
+        print("Database initialization complete.")
+# finaly 
