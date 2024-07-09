@@ -22,13 +22,51 @@ Welcome to the Book Recommendation System! This web application allows users to 
 ## Installation
 
 1. **Clone the repository**:
-   ```sh
-   git clone [https://github.com/Jay-SCM/Eostrix.git)]
-   cd book-recommendation-system
+   ```sh git clone [https://github.com/Jay-SCM/Eostrix.git)]cd book-recommendation-system```
 
- -  Set up a virtual environment:
-```sh
+ 2. **Set up a virtual environment**:
+```sh python -m venv env source env/bin/activate   # On Windows use `env\Scripts\activate```
 
-python -m venv env
-source env/bin/activate   # On Windows use `env\Scripts\activate
+3. **Install the dependencies***:
 
+```sh pip install -r requirements.txt```
+
+- **Set up the database**:
+```sh python initialize_db.py```
+
+4. **Run the application**:
+
+- run
+```sh flask run```
+
+# Access the application:
+Open your web browser and go to http://127.0.0.1:5000/.
+
+# Usage
+Register and Log In
+Register: Create an account by providing a username, email, and password.
+Log In: Log in to your account using your email and password.
+Search for Books
+Search Bar: Use the search bar on the home page to find books by title, author, or genre.
+Dynamic Results: The search results are fetched dynamically from the Google Books API and displayed on the search results page.
+
+# Get Recommendations
+Personalized Recommendations: Receive book recommendations based on your saved preferences and ratings.
+Rate and Review Books
+
+# Rate Books:
+Provide a rating for books you have read.
+# Review Books:
+Write a review to share your thoughts about a book.
+Manage Favorites
+
+# Add to Favorites:
+Save your favorite books to your profile for easy access.
+View Favorites: View a list of your favorite books from your profile.
+
+- License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+# Contact
+For any inquiries, please reach out to me at:
+linkedin.com/in/john-f-8094a9266.
